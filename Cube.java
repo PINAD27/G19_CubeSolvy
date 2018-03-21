@@ -1,6 +1,6 @@
 public class Cube{
 
-	private static class State{
+	private static class State{ // class to store state
 		public Color[] in;
 		public State(Color[] in){
 			this.in = in;
@@ -23,8 +23,8 @@ public class Cube{
  	}
 
 	public Cube(Color[] faces){
+		this.initial = new State(faces);
 		this.faces = faces;
-    initial = new State(faces);
   }
 
 	public Cube(Cube other){ //copied cube
@@ -147,7 +147,7 @@ public class Cube{
 		this.rotations = r;
 	}
 
-	
+
 	public Cube copy(){ //cube copy
 		Cube c;
 		int c_rotations = this.rotations;
