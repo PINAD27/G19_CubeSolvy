@@ -66,8 +66,6 @@ public class LinkedQueue<T> implements Queue<T>{
   }
 
 
-
-
   public T getFront(){
     return front.value;
   }

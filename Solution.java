@@ -1,12 +1,16 @@
 public class Solution{
 
-  private Cube[] cubes;
-  private Queue<Cube> queue;
+  private Queue<Cube> cubes;
   private int callsToIsValid;
 
   public Solution(Cube[] cubes){
-    this.cubes = cubes;
-    this.queue = new LinkedQueue<Cubes>;
+    this.cubes = new Queue<Cube>();
+    if (cubes.length > 4){
+      throw new IndexOutOfBoundsException("too many cubes passed");
+    }
+    for(int i = 0; i < cubes.length; i++){
+      cube.enqueue(cubes[i].copy());
+    }
     this.callsToIsValid = 0
   }
 
@@ -14,7 +18,7 @@ public class Solution{
     if(cubes==null){
       throw new NullPointerException("Null element passed");
     }
-
+    
   }
 
   public int size(){
