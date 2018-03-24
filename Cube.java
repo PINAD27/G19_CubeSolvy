@@ -1,20 +1,20 @@
 public class Cube{
 
-	private static class State{ // class to store state
-		public Color[] in;
-		public State(Color[] in){
-			this.in = in;
-		}
-		public void print(){
-			for(int i = 0; i < 6; i++){
-				System.out.println(in[i]);
-			}
-		}
-	}
+	// private static class State{ // class to store state
+	// 	public Color[] in;
+	// 	public State(Color[] in){
+	// 		this.in = in;
+	// 	}
+	// 	public void print(){
+	// 		for(int i = 0; i < 6; i++){
+	// 			System.out.println(in[i]);
+	// 		}
+	// 	}
+	// }
 
 	private Color[] faces = new Color[6];
   private int rotations;
-	private State initial;
+	private int[] initial;
 	//private State[] states = new State[24]; //stores cube states
   private String[] order = (new String[]{"I","R","R","R","RR","R","R","R","RR","R","R","R","LR","R","R","R","LR","R","R","R","RR","R","R","R"});
 
@@ -23,15 +23,30 @@ public class Cube{
  	}
 
 	public Cube(Color[] faces){
-		this.initial = new State(faces);
-		this.faces = faces;
+		this.initial = new int[6];
+    for (int i =0;i<faces.length;i++){
+      if(faces[i]== Color.BLUE){
+        initial[i]=1;
+      }
+      else if(faces[i]== Color.RED){
+        initial[i]=2;
+      }
+      else if(faces[i]== Color.GREEN){
+        initial[i]=3;
+      }
+      else{
+        initial[i]=4;
+      }
+    }
+    Color[] temp = faces;
+		this.faces = temp;
   }
 
-	public Cube(Cube other){ //copied cube
-		Cube c = other.copy();
-		this.faces = c.faces;
-		this.rotations = c.rotations;
-	}
+	// public Cube(Cube other){ //copied cube
+	// 	Cube c = other.copy();
+	// 	this.faces = c.faces;
+	// 	this.rotations = c.rotations;
+	// }
 
 
   public boolean hasNext(){
@@ -136,38 +151,52 @@ public class Cube{
 	}
 
   public void Identity(){
-    faces = initial.in;
+     for (int i =0;i<faces.length;i++){
+      if(initial[i]==1){
+        faces[i]=Color.BLUE;
+      }
+      else if(initial[i]==2){
+        faces[i]= Color.RED;
+      }
+      else if(initial[i]==3){
+        faces[i]= Color.GREEN;
+      }
+      else{
+        faces[i]= Color.WHITE;
+      }
+    }
+    
   }
 
-	public void setInitialState(State s){
-		this.initial = s;
-	}
+	//public void setInitialState(State s){
+		//this.initial = s;
+	//}
 
 	public void setRotations(int r){
 		this.rotations = r;
 	}
 
 
-	public Cube copy(){ //cube copy
-		Cube c;
-		int c_rotations = this.rotations;
-		Color[] c_faces = new Color[6];
-		State c_initial = null;
-		for(int i = 0; i < 6; i++){
-			c_faces[i] = faces[i];
-		}
-		for(int i = 0; i < rotations; i++){
-			c_initial.in[i] = initial.in[i];
-		}
-		c = new Cube(c_faces);
-		c.setInitialState(c_initial);
-		c.setRotations(c_rotations);
-		return c;
-	}
+	// public Cube copy(){ //cube copy
+	// 	Cube c;
+	// 	int c_rotations = this.rotations;
+	// 	Color[] c_faces = new Color[6];
+	// 	State c_initial = null;
+	// 	for(int i = 0; i < 6; i++){
+	// 		c_faces[i] = faces[i];
+	// 	}
+	// 	for(int i = 0; i < rotations; i++){
+	// 		c_initial.in[i] = initial.in[i];
+	// 	}
+	// 	c = new Cube(c_faces);
+	// 	c.setInitialState(c_initial);
+	// 	c.setRotations(c_rotations);
+	// 	return c;
+	// }
 
 public static void main(String[] args) {
-		Cube c;
-	 c = new Cube ( new Color [] { Color.BLUE, Color.GREEN, Color.WHITE, Color.GREEN, Color.BLUE, Color.RED}) ;
+	 Cube c;
+	 c = new Cube ( new Color [] { Color.BLUE, Color.GREEN, Color.WHITE, Color.GREEN, Color.BLUE, Color.RED});
 
    int count = 0;
    while(count++ < 24){
