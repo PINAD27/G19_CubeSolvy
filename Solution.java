@@ -8,7 +8,7 @@ public class Solution{
       throw new IndexOutOfBoundsException("too many cubes passed");
     }
     this.cubes = cubes;
-    this.callsToIsValid = 0
+    this.callsToIsValid = 0;
   }
 
   public Solution(Solution other, Cube[] cubes){
@@ -19,7 +19,7 @@ public class Solution{
   }
 
   public int size(){
-
+    return cubes.length;
   }
 
   public Cube getCube(int pos){
@@ -57,11 +57,34 @@ public class Solution{
   }
 
   public boolean isValid(Cube next){
+    Cube[] temp = new Cube [cubes.length+1];
+    Cube[] orig= new Cube [cubes.length];
+    for (int i = 0;i<cubes.length;i++){
+      temp[i]=cubes[i];
+      orig[i]=cubes[i];
+    }
+    temp[cubes.length]=next;
+    cubes=temp;
+    boolean check=this.isValid();
+    cubes= orig;
+    return check;
+
+
+
 
     callsToIsValid++;
+    return true;
   }
 
   public String toString(){
+    StringBuffer res = new StringBuffer();
+    for (int i=0;i<cubes.length;i++){
+      res.append((i+1)+". "+cubes[i].toString()+"\n");
+    }
+    String s = res.toString();
+    return s;
+
+
 
   }
 
