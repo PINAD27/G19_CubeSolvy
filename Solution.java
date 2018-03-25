@@ -26,12 +26,13 @@ public class Solution{
     if (pos > size()){
       throw new IndexOutOfBoundsException("position is out of bounds of the data struct");
     }
-    return cube[pos];
+    return cubes[pos];
   }
 
   public boolean isValid(){
     //front right left back
-    boolean sides = new boolean[size()]; //stores the validation of all cubes
+    callsToIsValid++;
+    boolean[] sides = new boolean[size()]; //stores the validation of all cubes
     for(int i = 0; i < size()-1; i++){
       sides[i] = validate(i);
     }
@@ -47,13 +48,15 @@ public class Solution{
 
   public boolean validate(int pos){
     Cube c = getCube(pos);
+    boolean f,r,l,b;
+    f = r = l = b = false;
     for(int i = 1; i < (size()-pos); i++){
-      boolean f = c.getFront() != cubes[i].getFront();
-      boolean r = c.getRight() != cubes[i].getRight();
-      boolean l = c.getLeft() != cubes[i].getLeft();
-      boolean b = c.getBack() != cubes[i].getBack();
+      f = c.getFront() != cubes[i].getFront();
+      r = c.getRight() != cubes[i].getRight();
+      l = c.getLeft() != cubes[i].getLeft();
+      b = c.getBack() != cubes[i].getBack();
     }
-    return f == r == l == b;
+    return f == true && r == true && l == true && b == true;
   }
 
   public boolean isValid(Cube next){
@@ -68,12 +71,6 @@ public class Solution{
     boolean check=this.isValid();
     cubes= orig;
     return check;
-
-
-
-
-    callsToIsValid++;
-    return true;
   }
 
   public String toString(){
