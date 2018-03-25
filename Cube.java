@@ -42,11 +42,12 @@ public class Cube{
 		this.faces = temp;
   }
 
-	// public Cube(Cube other){ //copied cube
-	// 	Cube c = other.copy();
-	// 	this.faces = c.faces;
-	// 	this.rotations = c.rotations;
-	// }
+	public Cube(Cube other){ //copied cube
+		Cube c = other.copy();
+		this.initial = c.initial;
+		this.rotations = c.rotations;
+		this.faces = c.faces;
+	 }
 
 
   public boolean hasNext(){
@@ -165,34 +166,63 @@ public class Cube{
         faces[i]= Color.WHITE;
       }
     }
-    
+
   }
 
-	//public void setInitialState(State s){
-		//this.initial = s;
-	//}
+	public void setInitial(int[] s){
+		this.initial = s;
+	}
 
 	public void setRotations(int r){
 		this.rotations = r;
 	}
 
 
-	// public Cube copy(){ //cube copy
-	// 	Cube c;
-	// 	int c_rotations = this.rotations;
-	// 	Color[] c_faces = new Color[6];
-	// 	State c_initial = null;
-	// 	for(int i = 0; i < 6; i++){
-	// 		c_faces[i] = faces[i];
-	// 	}
-	// 	for(int i = 0; i < rotations; i++){
-	// 		c_initial.in[i] = initial.in[i];
-	// 	}
-	// 	c = new Cube(c_faces);
-	// 	c.setInitialState(c_initial);
-	// 	c.setRotations(c_rotations);
-	// 	return c;
-	// }
+	public Cube copy(){ //cube copy
+		Cube c;
+		int c_rotations = this.rotations;
+		int temp[] = new int[6];
+		Color[] c_faces = new Color[6];
+		int[] c_initial = new int[6];
+
+		for (int i =0;i<faces.length;i++){
+      if(faces[i]== Color.BLUE){
+        temp[i]=1;
+      }
+      else if(faces[i]== Color.RED){
+        temp[i]=2;
+      }
+      else if(faces[i]== Color.GREEN){
+        temp[i]=3;
+      }
+      else{
+        temp[i]=4;
+      }
+    }
+
+		for (int i =0;i<temp.length;i++){
+		 if(temp[i]==1){
+			 c_faces[i]=Color.BLUE;
+		 }
+		 else if(temp[i]==2){
+			 c_faces[i]= Color.RED;
+		 }
+		 else if(temp[i]==3){
+			 c_faces[i]= Color.GREEN;
+		 }
+		 else{
+			 c_faces[i]= Color.WHITE;
+		 }
+	 }
+
+		for(int i = 0; i < 6; i++){
+			c_initial[i] = initial[i];
+		}
+		c = new Cube(c_faces);
+		c.setInitial(c_initial);
+		c.setRotations(c_rotations);
+		return c;
+	}
 
 public static void main(String[] args) {
 	 Cube c;
@@ -205,6 +235,9 @@ public static void main(String[] args) {
    }
 	 c.Identity();
 	 System.out.println(c);
+	 Cube l = c.copy();
+	 l.Rotate();
+	 System.out.println("C:\n"  + c + "\nL:" + l);
    /*
 	 System.out.println(c);
    c.Rotate();
