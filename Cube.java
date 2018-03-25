@@ -227,34 +227,31 @@ public class Cube{
 public static void main(String[] args) {
 	 Cube c,z;
 	 c = new Cube ( new Color [] { Color.BLUE, Color.GREEN, Color.WHITE, Color.GREEN, Color.BLUE, Color.RED});
-   z= new Cube ( new Color [] { Color.GREEN, Color.BLUE, Color.GREEN, Color.WHITE, Color.RED, Color.BLUE});
+   z= new Cube ( new Color [] { Color.GREEN, Color.GREEN, Color.GREEN, Color.WHITE, Color.RED, Color.BLUE});
    Cube[] cubes = new Cube[4];
    for (int i=0;i<4;i++){
     cubes[i]=c;
    }
-  
-   int count = 0;
-   while(count++ < 24){
-     c.next();
-     System.out.println(c);
-   }
-	 c.Identity();
-	 System.out.println(c);
-	 Cube l = c.copy();
-	 l.Rotate();
-	 System.out.println("C:\n"  + c + "\nL:" + l);
 
-   System.out.println("gsfdfdsfasfsfdsafdsafdsfasf");
+   // int count = 0;
+   // while(count++ < 24){
+   //   c.next();
+   //   System.out.println(c);
+   // }
+	 // c.Identity();
+	 // System.out.println(c);
+	 // Cube l = c.copy();
+	 // l.Rotate();
+	 // System.out.println("C:\n"  + c + "\nL:" + l);
+
+   // System.out.println("gsfdfdsfasfsfdsafdsafdsfasf");
    Solution s = new Solution(cubes);
-   Cube[] g = new Cube [2];
+   Cube[] g = new Cube [1];
    g[0]=c;
-   g[1]=z;
    Solution p = new Solution (g);
-   System.out.println(s.isValid());
-   System.out.println(p);
-   System.out.println(p.isValid());
-   System.out.println(s.isValid(c));
-   System.out.println(s);
+   // System.out.println(s.isValid());
+   System.out.println(p.isValid(z));
+   // System.out.println(s);
    /*
 	 System.out.println(c);
    c.Rotate();

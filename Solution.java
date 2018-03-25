@@ -33,20 +33,26 @@ public class Solution{
     //front right left back
     callsToIsValid++;
     boolean[] sides = new boolean[size()]; //stores the validation of all cubes
-    for(int i = 0; i < size()-1; i++){
+    for(int i = 0; i < size(); i++){
       sides[i] = validate(i);
+      // System.out.println("SIDE: UNGH: " +sides[i]);
     }
     boolean valid = true;
     for(int j = 0; j < sides.length; j++){
+      // System.out.println("SIDE: " + sides[j]);
       if(sides[j] == false){
         valid = false;
         break;
       }
     }
+    // System.out.println("VALID :"  +valid);
     return valid;
   }
 
   public boolean validate(int pos){
+    if(pos == size()-1) {
+      return true;
+    }
     Cube c = getCube(pos);
     boolean f,r,l,b;
     f = r = l = b = false;
@@ -56,6 +62,8 @@ public class Solution{
       l = c.getLeft() != cubes[i].getLeft();
       b = c.getBack() != cubes[i].getBack();
     }
+    // System.out.println("f: " + f + " r: " + r + " l: " + l + " b: " + b  );
+    // System.out.println(f == true && r == true && l == true && b == true);
     return f == true && r == true && l == true && b == true;
   }
 
