@@ -1,79 +1,76 @@
-public class LinkedQueue<T> implements Queue<T>{
+public class LinkedQueue<D> implements Queue<D> {
 
-  private static class Elem<E>{ //Shielded class
-    public E value;
-    public Elem<E> next;
-
-    public Elem(E value, Elem<E> next){
-      this.value = value;
-      this.next = next; //actually the one behind it
+    private static class Elem<T> {
+        private T value;
+        private Elem<T> next;
+        private Elem(T value, Elem<T> next) {
+            this.value = value;
+            this.next = next;
+        }
     }
-  }
 
-  private Elem<T> front;
-  private Elem<T> rear;
+    private Elem<D> front;
+    private Elem<D> rear;
 
-  public LinkedQueue(){
-    front = rear = null;
-   }
-
-  public boolean isEmpty(){
-    return ((front == null) && (rear == null));
-  }
-
-  public void enqueue(T newElement){
-    if(newElement == null){
-      throw new NullPointerException("null pointer in queue");
+    public LinkedQueue(){
+        front = rear = null;
     }
-    Elem<T> newElem = new Elem<T>(newElement, null);
-    if(isEmpty()){
-      front = newElem;
-      rear = newElem;
-    } else{
-      rear.next = newElem; //other elem type is rear, it's next pointer points to new elem
-      rear = newElem; //rear elem type is now the newElem, it's next is currently null, will be reassigned when enqueue is called.
+
+    public  boolean isEmpty(){
+       return front == null ;
     }
-  }
 
-  public T dequeue(){
-    if(isEmpty()){
-      throw new IllegalStateException("empty queue");
+    public  void enqueue(D newElement){
+
+        if(newElement == null) {
+            throw new NullPointerException("no null object in my queue !");
+        }
+
+        Elem<D> newElem;
+        newElem = new Elem<D>(newElement,null);
+        if(isEmpty()) {
+            front = newElem;
+            rear = newElem;
+        } else {
+            rear.next = newElem;
+            rear = newElem;
+        }
     }
-    Elem<T> outE = front;
-    front = front.next;
-    if(front == null){
-      rear = null;
+
+
+    public D dequeue() {
+
+        if(isEmpty()) {
+            throw new IllegalStateException("Dequeue method called on an empty queue");
+        }
+
+        D returnedValue;
+        returnedValue = front.value;
+
+        if(front.next == null) {
+            front = rear = null;
+        } else {
+            front = front.next;
+        }
+        return returnedValue;
     }
-    return outE.value;
-  }
 
-  public String toString() {
+    public String toString() {
 
-      StringBuffer returnedValue = new StringBuffer("[");
+        StringBuffer returnedValue = new StringBuffer("[");
 
-      if(!isEmpty()) {
-          Elem<T> cursor = front;
-          returnedValue.append(cursor.value);
-          while(cursor.next != null) {
-              cursor = cursor.next;
-              returnedValue.append(", "  + cursor.value);
-          }
-      }
+        if(!isEmpty()) {
+            Elem<D> cursor = front;
+            returnedValue.append(cursor.value);
+            while(cursor.next != null) {
+                cursor = cursor.next;
+                returnedValue.append(", "  + cursor.value);
+            }
+        }
 
-      returnedValue.append("]");
-      return returnedValue.toString();
+        returnedValue.append("]");
+        return returnedValue.toString();
 
-  }
-
-  public T getAtPos(int a){
-    Elem<T> cursor = front;
-    for(int i = 0; i < a; i++){
-      cursor = cursor.next;
     }
-    return cursor.value;
-  }
 
-  // public T getFront(){
-  //   return front.value;
-  // }
 }
