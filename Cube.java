@@ -18,9 +18,6 @@ public class Cube{
 	//private State[] states = new State[24]; //stores cube states
   private String[] order = (new String[]{"I","R","R","R","RR","R","R","R","RR","R","R","R","LR","R","R","R","LR","R","R","R","RR","R","R","R"});
 
-	public enum Color {
-		BLUE,RED,GREEN,WHITE
- 	}
 
 	public Cube(Color[] faces){
 		this.initial = new int[6];
@@ -227,7 +224,7 @@ public class Cube{
 public static void main(String[] args) {
 	 Cube c,z;
 	 c = new Cube ( new Color [] { Color.BLUE, Color.GREEN, Color.WHITE, Color.GREEN, Color.BLUE, Color.RED});
-   z= new Cube ( new Color [] { Color.GREEN, Color.GREEN, Color.GREEN, Color.WHITE, Color.RED, Color.BLUE});
+   z= new Cube ( new Color [] { Color.GREEN, Color.BLUE, Color.GREEN, Color.WHITE, Color.RED, Color.BLUE});
    Cube[] cubes = new Cube[4];
    for (int i=0;i<4;i++){
     cubes[i]=c;

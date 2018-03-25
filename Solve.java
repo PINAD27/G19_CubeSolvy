@@ -1,8 +1,8 @@
 public class Solve{
 
-  public enum Color {
-		BLUE,RED,GREEN,WHITE
- 	}
+  // public enum Color {
+	// 	BLUE,RED,GREEN,WHITE;
+ 	// }
 
   private static Queue<Solution> queue;
   private static Cube a = new Cube(new Color[]{Color.BLUE,Color.GREEN,Color.WHITE,Color.GREEN,Color.BLUE,Color.RED});
@@ -12,7 +12,6 @@ public class Solve{
   private static Cube[] cubes =new Cube[]{a,b,c,d};
 
   public Solve(){
-
   queue = new LinkedQueue<Solution>();
 
  }
@@ -31,8 +30,15 @@ public class Solve{
  }
 
  public Queue<Solution> breadthFirstSearch(){
+   Queue<Solution> result = new LinkedQueue<Solution>();
+   Queue<Solution> open = new LinkedQueue<Solution>();
+   Queue<Solution> solutions = new LinkedQueue<Solution>();
 
+   while(!open.isEmpty()){
+     Solution current = open.dequeue();
 
+   }
+   return null;
  }
 
  public static void main(String[] args) {
