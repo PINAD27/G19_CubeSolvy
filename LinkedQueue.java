@@ -65,8 +65,15 @@ public class LinkedQueue<T> implements Queue<T>{
 
   }
 
-
-  public T getFront(){
-    return front.value;
+  public T getAtPos(int a){
+    Elem<T> cursor = front;
+    for(int i = 0; i < a; i++){
+      cursor = cursor.next;
+    }
+    return cursor.value;
   }
+
+  // public T getFront(){
+  //   return front.value;
+  // }
 }
