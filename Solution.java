@@ -31,6 +31,20 @@ public class Solution{
   }
 
   public boolean isValid(Cube next){
+    Cube[] temp = new Cube [cubes.length+1];
+    Cube[] orig= new Cube [cubes.length];
+    for (int i = 0;i<cubes.length;i++){
+      temp[i]=cubes[i];
+      orig[i]=cubes[i];
+    }
+    temp[cubes.length]=next;
+    cubes=temp;
+    boolean check=this.isValid();
+    cubes= orig;
+    return check;
+
+
+
 
     callsToIsValid++;
     return true;
