@@ -227,7 +227,11 @@ public class Cube{
 public static void main(String[] args) {
 	 Cube c;
 	 c = new Cube ( new Color [] { Color.BLUE, Color.GREEN, Color.WHITE, Color.GREEN, Color.BLUE, Color.RED});
-
+   Cube[] cubes = new Cube[4];
+   for (int i=0;i<4;i++){
+    cubes[i]=c;
+   }
+  
    int count = 0;
    while(count++ < 24){
      c.next();
@@ -238,6 +242,10 @@ public static void main(String[] args) {
 	 Cube l = c.copy();
 	 l.Rotate();
 	 System.out.println("C:\n"  + c + "\nL:" + l);
+
+   System.out.println("gsfdfdsfasfsfdsafdsafdsfasf");
+   Solution s = new Solution(cubes);
+   System.out.println(s);
    /*
 	 System.out.println(c);
    c.Rotate();
