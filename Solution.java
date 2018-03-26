@@ -64,10 +64,13 @@ public class Solution{
       r = c.getRight() != cubes[i].getRight();
       l = c.getLeft() != cubes[i].getLeft();
       b = c.getBack() != cubes[i].getBack();
+      if(f == false || r == false || l == false || b == false){
+        return false;
+      }
     }
     // System.out.println("f: " + f + " r: " + r + " l: " + l + " b: " + b  );
     // System.out.println(f == true && r == true && l == true && b == true);
-    return f == true && r == true && l == true && b == true;
+    return (f == true) && (r == true) && (l == true) && (b == true);
   }
 
   public boolean isValid(Cube next){
