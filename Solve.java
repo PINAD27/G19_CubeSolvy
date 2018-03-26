@@ -13,6 +13,7 @@ public class Solve{
 
   public Solve(){
   queue = new LinkedQueue<Solution>();
+
  }
 
  public static Queue<Solution> generateAndTest(){
@@ -51,9 +52,6 @@ public class Solve{
    return queue;
  }
 
-   System.out.println(count);
-   return result;
- }
  public Queue<Solution> breadthFirstSearch(){
    Queue<Solution> result = new LinkedQueue<Solution>();
    Queue<Solution> open = new LinkedQueue<Solution>();
