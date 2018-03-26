@@ -67,7 +67,7 @@ public class Solve{
 
  public static void main(String[] args) {
  	Solve s = new Solve();
- 	s.generateAndTest();
+ 	System.out.println(s.generateAndTest());
  }
 
 }
