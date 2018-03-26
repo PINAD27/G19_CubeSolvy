@@ -31,12 +31,13 @@ public class Solve{
    			cubes[3].setRotations(0);
    			while (cubes[3].hasNext()){
 
-   				count ++;
+   				
    				cubes[3].next();
    				Cube[] temp = cubes.clone();
 
    				Solution p = new Solution(temp);
    				if (p.isValid()){
+   					count ++;
    					System.out.println(p);
    					queue.enqueue(p);
    				}
@@ -67,7 +68,7 @@ public class Solve{
 
  public static void main(String[] args) {
  	Solve s = new Solve();
- 	System.out.println(s.generateAndTest());
+ 	s.generateAndTest();
  }
 
 }

@@ -39,7 +39,7 @@ public class Solution{
     for(int i = 0; i < size(); i++){
       sides[i] = validate(i);
       //System.out.println(validate(i)); //deleetem
-      System.out.println("SIDE: UNGH: " +sides[i]);
+      //System.out.println("SIDE: UNGH: " +sides[i]);
     }
     boolean valid = true;
     for(int j = 0; j < sides.length; j++){
@@ -61,7 +61,7 @@ public class Solution{
     //System.out.println(c);
     boolean f,r,l,b;
     f = r = l = b = false;
-    for(int i = 0; i < (size()-pos); i++){
+    for(int i = 0; i < (size()); i++){
       if(i != pos){
       f = c.getFront() != cubes[i].getFront();
       r = c.getRight() != cubes[i].getRight();
