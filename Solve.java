@@ -13,6 +13,7 @@ public class Solve{
 
   public Solve(){
   queue = new LinkedQueue<Solution>();
+
  }
 
  public static Queue<Solution> generateAndTest(){
@@ -35,8 +36,8 @@ public class Solve{
    				Cube[] temp = cubes.clone();
 
    				Solution p = new Solution(temp);
-   				System.out.println(p.isValid)
    				if (p.isValid()){
+   					System.out.println(p);
    					queue.enqueue(p);
    				}
 
@@ -52,9 +53,6 @@ public class Solve{
    return queue;
  }
 
-   System.out.println(count);
-   return result;
- }
  public Queue<Solution> breadthFirstSearch(){
    Queue<Solution> result = new LinkedQueue<Solution>();
    Queue<Solution> open = new LinkedQueue<Solution>();
@@ -69,7 +67,7 @@ public class Solve{
 
  public static void main(String[] args) {
  	Solve s = new Solve();
- 	System.out.println(s.generateAndTest());
+ 	s.generateAndTest();
  }
 
 }

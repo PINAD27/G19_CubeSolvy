@@ -64,6 +64,7 @@ public class Solution{
       r = c.getRight() != cubes[i].getRight();
       l = c.getLeft() != cubes[i].getLeft();
       b = c.getBack() != cubes[i].getBack();
+      
     }
     // System.out.println("f: " + f + " r: " + r + " l: " + l + " b: " + b  );
     // System.out.println(f == true && r == true && l == true && b == true);
