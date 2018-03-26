@@ -21,6 +21,7 @@ public class Cube{
 
 	public Cube(Color[] faces){
 		this.initial = new int[6];
+    this.rotations=0;
     for (int i =0;i<faces.length;i++){
       if(faces[i]== Color.BLUE){
         initial[i]=1;
@@ -48,7 +49,7 @@ public class Cube{
 
 
   public boolean hasNext(){
-    return rotations < 23;
+    return this.rotations < 23;
   }
 
   public void next() throws IllegalStateException{
