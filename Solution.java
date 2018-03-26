@@ -3,11 +3,11 @@ public class Solution{
   private Cube[] cubes;
   private int callsToIsValid;
 
-  public Solution(Cube[] cubes){
-    if (cubes.length > 4){
+  public Solution(Cube[] c){
+    if (c.length > 4){
       throw new IndexOutOfBoundsException("too many cubes passed");
     }
-    this.cubes = cubes;
+    this.cubes = c;
     this.callsToIsValid = 0;
   }
 
@@ -18,6 +18,9 @@ public class Solution{
 
   }
 
+  public Cube[] getCubes(){
+    return cubes;
+  }
   public int size(){
     return cubes.length;
   }

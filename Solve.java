@@ -5,30 +5,33 @@ public class Solve{
  	// }
 
   private static Queue<Solution> queue;
-  private static Cube a = new Cube(new Color[]{Color.BLUE,Color.GREEN,Color.WHITE,Color.GREEN,Color.BLUE,Color.RED});
-  private static Cube b = new Cube(new Color[]{Color.WHITE,Color.GREEN,Color.BLUE,Color.WHITE,Color.RED,Color.RED});
-  private static Cube c = new Cube(new Color[]{Color.GREEN,Color.WHITE,Color.RED,Color.BLUE,Color.RED,Color.RED});
-  private static Cube d = new Cube(new Color[]{Color.BLUE,Color.RED,Color.GREEN,Color.GREEN,Color.WHITE,Color.WHITE});
-  private static Cube[] cubes =new Cube[]{a,b,c,d};
+  private static Cube a;
+  private static Cube b;
+  private static Cube c;
+  private static Cube d;
+  private static Cube[] cubes;
 
   public Solve(){
   queue = new LinkedQueue<Solution>();
-
+  a = new Cube(new Color[]{Color.BLUE,Color.GREEN,Color.WHITE,Color.GREEN,Color.BLUE,Color.RED});
+  b = new Cube(new Color[]{Color.WHITE,Color.GREEN,Color.BLUE,Color.WHITE,Color.RED,Color.RED});
+  c = new Cube(new Color[]{Color.GREEN,Color.WHITE,Color.RED,Color.BLUE,Color.RED,Color.RED});
+  d = new Cube(new Color[]{Color.BLUE,Color.RED,Color.GREEN,Color.GREEN,Color.WHITE,Color.WHITE});
+  cubes = new Cube[]{a,b,c,d};
  }
 
  public static Queue<Solution> generateAndTest(){
-   for(int i = 0; i < 4; i++){
-     while(cubes[i].hasNext()){
-       cubes[i].next();
-       Solution s = new Solution(cubes);
-       if(s.isValid()){
-         queue.enqueue(s);
-       }
-     }
-   }
-   return queue;
- }
+   int = 0;
+   Queue<Solution> result = new LinkedQueue<Solution>();
+   Solution s = new Solution(cubes);
+   queue.enqueue(s);
+   while(i < 24){
 
+   }
+
+   System.out.println(count);
+   return result;
+ }
  public Queue<Solution> breadthFirstSearch(){
    Queue<Solution> result = new LinkedQueue<Solution>();
    Queue<Solution> open = new LinkedQueue<Solution>();
@@ -42,7 +45,8 @@ public class Solve{
  }
 
  public static void main(String[] args) {
-   System.out.println(generateAndTest());
+   Solve s = new Solve();
+   s.generateAndTest();
  }
 
 }
