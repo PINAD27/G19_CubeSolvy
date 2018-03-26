@@ -35,6 +35,7 @@ public class Solve{
    				Cube[] temp = cubes.clone();
 
    				Solution p = new Solution(temp);
+   				System.out.println(p.isValid)
    				if (p.isValid()){
    					queue.enqueue(p);
    				}
@@ -68,7 +69,6 @@ public class Solve{
 
  public static void main(String[] args) {
  	Solve s = new Solve();
- 	System.out.println ("fadsfdsfhsdakjfdshjkfdhfdjkdfshakhfdajkhfjkafdsfhdshfjkdsajdskafhjksad");
  	System.out.println(s.generateAndTest());
  }
 
