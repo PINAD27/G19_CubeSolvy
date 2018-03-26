@@ -9,7 +9,7 @@ public class Solve{
   private static Cube b = new Cube(new Color[]{Color.WHITE,Color.GREEN,Color.BLUE,Color.WHITE,Color.RED,Color.RED});
   private static Cube c = new Cube(new Color[]{Color.GREEN,Color.WHITE,Color.RED,Color.BLUE,Color.RED,Color.RED});
   private static Cube d = new Cube(new Color[]{Color.BLUE,Color.RED,Color.GREEN,Color.GREEN,Color.WHITE,Color.WHITE});
-  private static Cube[] cubes =new Cube[]{a,b,c,d};
+  public static Cube[] cubes =new Cube[]{a,b,c,d};
 
   public Solve(){
   queue = new LinkedQueue<Solution>();
@@ -17,15 +17,38 @@ public class Solve{
  }
 
  public static Queue<Solution> generateAndTest(){
-   for(int i = 0; i < 4; i++){
-     while(cubes[i].hasNext()){
-       cubes[i].next();
-       Solution s = new Solution(cubes);
-       if(s.isValid()){
-         queue.enqueue(s);
-       }
-     }
-   }
+ 	int count = 1; 
+   while (cubes[0].hasNext()){
+   	cubes[0].next();
+	cubes[1].setRotations(0);
+   	while (cubes[1].hasNext()){
+   		
+   		cubes[1].next();
+   		cubes[2].setRotations(0);
+   		while (cubes[2].hasNext()){
+   		
+   			cubes[2].next();
+   			cubes[3].setRotations(0);
+   			while (cubes[3].hasNext()){
+   		
+   				count ++;
+   				cubes[3].next();
+   				Cube[] temp = cubes.clone();
+   				
+   				Solution p = new Solution(temp); 
+   				if (p.isValid()){
+   					queue.enqueue(p);
+   				}
+
+   			}
+   		}
+   	}
+   	
+   } 
+   System.out.println(count);
+
+
+  
    return queue;
  }
 
@@ -42,7 +65,9 @@ public class Solve{
  }
 
  public static void main(String[] args) {
-   System.out.println(generateAndTest());
+ 	Solve s = new Solve();
+ 	System.out.println ("fadsfdsfhsdakjfdshjkfdhfdjkdfshakhfdajkhfjkafdsfhdshfjkdsajdskafhjksad");
+ 	System.out.println(s.generateAndTest());
  }
 
 }
