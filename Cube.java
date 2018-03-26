@@ -223,9 +223,10 @@ public class Cube{
 	}
 
 public static void main(String[] args) {
-	 Cube c,z;
-	 c = new Cube ( new Color [] { Color.BLUE, Color.GREEN, Color.WHITE, Color.GREEN, Color.BLUE, Color.RED});
-   z= new Cube ( new Color [] { Color.GREEN, Color.BLUE, Color.GREEN, Color.WHITE, Color.RED, Color.BLUE});
+	 Cube c,z,o;
+	 c = new Cube ( new Color [] { Color.RED, Color.RED, Color.WHITE, Color.GREEN, Color.BLUE, Color.RED});
+   z= new Cube ( new Color [] { Color.RED, Color.BLUE, Color.GREEN, Color.WHITE, Color.RED, Color.BLUE});
+	 o= new Cube ( new Color [] { Color.BLUE, Color.WHITE, Color.RED, Color.BLUE, Color.GREEN, Color.WHITE});
    Cube[] cubes = new Cube[4];
    for (int i=0;i<4;i++){
     cubes[i]=c;
@@ -244,8 +245,9 @@ public static void main(String[] args) {
 
    // System.out.println("gsfdfdsfasfsfdsafdsafdsfasf");
    Solution s = new Solution(cubes);
-   Cube[] g = new Cube [1];
+   Cube[] g = new Cube [2];
    g[0]=c;
+	 g[1] = o;
    Solution p = new Solution (g);
    // System.out.println(s.isValid());
    System.out.println(p.isValid(z));

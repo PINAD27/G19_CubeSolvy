@@ -38,7 +38,8 @@ public class Solution{
     boolean[] sides = new boolean[size()]; //stores the validation of all cubes
     for(int i = 0; i < size(); i++){
       sides[i] = validate(i);
-      // System.out.println("SIDE: UNGH: " +sides[i]);
+      //System.out.println(validate(i)); //deleetem
+      System.out.println("SIDE: UNGH: " +sides[i]);
     }
     boolean valid = true;
     for(int j = 0; j < sides.length; j++){
@@ -57,9 +58,11 @@ public class Solution{
       return true;
     }
     Cube c = getCube(pos);
+    //System.out.println(c);
     boolean f,r,l,b;
     f = r = l = b = false;
-    for(int i = 1; i < (size()-pos); i++){
+    for(int i = 0; i < (size()-pos); i++){
+      if(i != pos){
       f = c.getFront() != cubes[i].getFront();
       r = c.getRight() != cubes[i].getRight();
       l = c.getLeft() != cubes[i].getLeft();
@@ -68,9 +71,10 @@ public class Solution{
         return false;
       }
     }
-    // System.out.println("f: " + f + " r: " + r + " l: " + l + " b: " + b  );
+    }
+     //System.out.println("f: " + f + " r: " + r + " l: " + l + " b: " + b  );
     // System.out.println(f == true && r == true && l == true && b == true);
-    return (f == true) && (r == true) && (l == true) && (b == true);
+    return true;
   }
 
   public boolean isValid(Cube next){
@@ -81,9 +85,9 @@ public class Solution{
       orig[i]=cubes[i];
     }
     temp[cubes.length]=next;
-    cubes=temp;
-    boolean check=this.isValid();
-    cubes= orig;
+    cubes = temp;
+    boolean check = this.isValid();
+    cubes = orig;
     return check;
   }
 
